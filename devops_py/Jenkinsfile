@@ -1,11 +1,5 @@
 pipeline{
     agent any
-    stages{
-        stage('Checkout'){
-            steps{
-                git 'https://github.com/pratikkamble14/python-devops.git'
-            }
-        }
         stage('Docker Build'){
             steps{
                 sh 'docker build -t python-app:latest .'
