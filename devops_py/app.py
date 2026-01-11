@@ -14,7 +14,7 @@ def health():
 def greet(name):
     return jsonify(message=f'Hello,{name},Welcome to Flask..')
 
-@app.route('/add',methods=['POST'])
+@app.route('/add',methods=['GET','POST'])
 def add_num():
     data=request.get_json()
     a=data.get('a')
