@@ -1,14 +1,19 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage('Docker Build'){
-            steps{
-                sh 'docker build -t python-app:latest .'
+
+    stages {
+        stage('Docker Build') {
+            steps {
+                dir('devops_py') {
+                    sh 'docker build -t python-app:latest .'
+                }
             }
         }
-        stage('Run Container'){
-            steps{
-                sh 'docker run -d -p 5001:5000 python-app:latest'
+
+        stage('Run Container') {
+            steps {
+                sh 'docker rm -f python-app-container || true'
+                sh 'docker run -d --name python-app-container -p 5001:5000 python-app:latest'
             }
         }
     }
