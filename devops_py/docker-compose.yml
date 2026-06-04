@@ -1,0 +1,9 @@
+services:
+  python_app:
+    build: .
+    container_name: p_app
+
+    ports:
+      - "5000:5000"
+
+    restart: always
